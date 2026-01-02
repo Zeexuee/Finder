@@ -1,0 +1,136 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  passwordHash  String
+  name          String
+  role          Role            @default(USER)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  transactions  Transaction[]
+  aiLogs        AILog[]
+
+  @@map("users")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model ThesisTitle {
+  id                String                  @id @default(uuid())
+  title             String
+  fieldOfStudy      String
+  keywords          String[]
+  method            String?
+  abstractSummary   String?
+  embedding         Unsupported("vector")?
+  createdAt         DateTime                @default(now())
+  updatedAt         DateTime                @updatedAt
+
+  references        ThesisReference[]
+
+  @@map("thesis_titles")
+}
+
+model Reference {
+  id              String            @id @default(uuid())
+  title           String
+  authors         String
+  year            Int
+  source          String
+  doi             String?
+  fieldOfStudy    String
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  theses          ThesisReference[]
+
+  @@map("references")
+}
+
+model ThesisReference {
+  id              String    @id @default(uuid())
+  thesisId        String
+  referenceId     String
+
+  thesis          ThesisTitle @relation(fields: [thesisId], references: [id], onDelete: Cascade)
+  reference       Reference   @relation(fields: [referenceId], references: [id], onDelete: Cascade)
+
+  createdAt       DateTime   @default(now())
+
+  @@unique([thesisId, referenceId])
+  @@map("thesis_references")
+}
+
+model Dataset {
+  id              String        @id @default(uuid())
+  name            String
+  description     String
+  fieldOfStudy    String
+  fileUrl         String
+  price           Float         @default(0)
+  isPaid          Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  transactions    Transaction[]
+
+  @@map("datasets")
+}
+
+model Transaction {
+  id              String        @id @default(uuid())
+  userId          String
+  itemType        ItemType
+  itemId          String
+  amount          Float
+  status          TransactionStatus @default(PENDING)
+  paymentMethod   String?
+  transactionToken String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
+
+enum ItemType {
+  DATASET
+  OUTLINE
+  TITLE_GENERATION
+}
+
+enum TransactionStatus {
+  PENDING
+  PAID
+  FAILED
+  EXPIRED
+}
+
+model AILog {
+  id              String    @id @default(uuid())
+  userId          String?
+  promptType      String
+  input           String
+  output          String
+  createdAt       DateTime  @default(now())
+
+  user            User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("ai_logs")
+}
