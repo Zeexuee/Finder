@@ -1,8 +1,8 @@
-# Thesis Finder 🎓
+# Thesis Finder 
 
 AI-powered thesis search and generation system. Find, generate, and download thesis titles and research datasets.
 
-## 🏗️ Architecture
+##  Architecture
 
 - **Frontend**: Next.js 14 + TypeScript + TailwindCSS
 - **Backend**: Node.js + Express + Prisma + PostgreSQL with pgvector
@@ -11,7 +11,7 @@ AI-powered thesis search and generation system. Find, generate, and download the
 - **Auth**: Session-based (express-session)
 - **Deployment**: Docker Compose
 
-## 📋 Features
+##  Features
 
 ✅ Smart thesis search by keywords and field of study
 ✅ AI-powered title generation (Gemini 3 Pro)
@@ -146,5 +146,6 @@ See `.env.example` files in each directory.
 - ✅ User data protection
 
 ## License
-
+see zee
+hit me: zeexuee@tutamail.com
 MIT
