@@ -1,6 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = require("@prisma/client");
 
-// @ts-nocheck
 const prisma = new PrismaClient();
 
 async function main() {
@@ -23,7 +22,7 @@ async function main() {
     },
   });
 
-  void await prisma.user.create({
+  await prisma.user.create({
     data: {
       email: "admin@example.com",
       passwordHash: "$2a$12$sample_hash_2",
@@ -212,7 +211,7 @@ async function main() {
     },
   });
 
-  void await prisma.dataset.create({
+  await prisma.dataset.create({
     data: {
       name: "Traffic Flow Data",
       description: "Real-time traffic sensor data from major cities",

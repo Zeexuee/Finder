@@ -1,8 +1,5 @@
-flask==3.0.0
-python-dotenv==1.0.0
-sentence-transformers==2.2.2
+flask==3.0.3
+python-dotenv==1.0.1
+sentence-transformers==2.7.0
 faiss-cpu==1.13.2
-google-generativeai==0.3.0
-requests==2.31.0
-numpy==1.24.3
-torch==2.0.1
+torch==2.1.2

@@ -28,6 +28,10 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Secret keys (local only)
+keydoc.md
+keydoc.txt
 yarn-debug.log*
 yarn-error.log*
 
