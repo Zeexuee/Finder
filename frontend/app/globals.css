@@ -1,16 +1,68 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-* {
-  @apply antialiased;
+@layer base {
+  * {
+    @apply antialiased;
+  }
+
+  html,
+  body {
+    @apply h-full w-full bg-gray-50;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #e5e7eb;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d1d5db;
+  }
 }
 
-html,
-body {
-  @apply h-full;
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 rounded-full font-semibold transition-all duration-300 
+           bg-gradient-to-r from-purple-600 to-pink-600 
+           hover:from-purple-700 hover:to-pink-700 
+           hover:shadow-lg hover:shadow-purple-400/30
+           active:scale-95 text-white;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 
+           bg-gray-200 hover:bg-gray-300 
+           text-gray-800 hover:text-gray-900;
+  }
+
+  .trending-card {
+    @apply bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 
+           border border-gray-200 hover:border-purple-300 cursor-pointer hover:-translate-y-1;
+  }
+
+  .search-input {
+    @apply w-full px-6 py-4 rounded-full bg-white border-2 border-gray-200 
+           text-gray-800 placeholder-gray-400 focus:outline-none 
+           focus:border-purple-600 transition-all duration-300;
+  }
 }
 
-.gradient-text {
-  @apply bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent;
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent;
+  }
 }
