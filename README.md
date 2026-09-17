@@ -1,3 +1,4 @@
+saya tidak lanjutkan projek ini, karena beberapa hal
 # Thesis Finder 
 
 AI-powered thesis search and generation system. Find, generate, and download thesis titles and research datasets.
