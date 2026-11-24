@@ -134,10 +134,10 @@ See `.env.example` files in each directory.
 
 ## Security
 
-- ✅ No full thesis storage
-- ✅ Public/simulated datasets only
-- ✅ Disclaimer requirement
-- ✅ User data protection
+- No full thesis storage
+- Public/simulated datasets only
+- Disclaimer requirement
+- User data protection
 
 ## License
 see zee
