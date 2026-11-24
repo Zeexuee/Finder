@@ -14,14 +14,7 @@ AI-powered thesis search and generation system. Find, generate, and download the
 
 ##  Features
 
-✅ Smart thesis search by keywords and field of study
-✅ AI-powered title generation (Gemini 3 Pro)
-✅ Automatic outline generation
-✅ Research method recommendations
-✅ Secure payment gateway (Midtrans)
-✅ Research dataset downloads
-✅ Vector similarity search
-✅ User authentication & dashboard
+Smart thesis search by keywords and field of study, AI-powered title generation (Gemini 3 Pro), Automatic outline generation, Research method recommendations, Secure payment gateway (Midtrans), Research dataset downloads, Vector similarity search, User authentication & dashboard
 
 ## Project Structure
 
